@@ -22,6 +22,8 @@ namespace KMC_Lattice {
 		Parameters_Lattice Params_lattice;
 		//! Determines whether logging to a logfile during the simulation will be enabled or not.
 		bool Enable_logging = false;
+		//! Determines whether logging to a writefile during the simulation, for printing out additional values, will be enabled or not.
+		bool Enable_writing = false;
 		//! Defines the desired temperature of the simulation in Kelvin.
 		int Temperature = 0;
 		//! Determines whether the first reaction method will be used or not.
@@ -34,6 +36,8 @@ namespace KMC_Lattice {
 		bool Enable_full_recalc = false;
 		//! Defines the desired output file stream pointer to the logfile.
 		std::ofstream* Logfile = nullptr;
+		//! Defines the desired output file stream pointer to the writefile.
+		std::ofstream* Writefile = nullptr;
 
 		// Functions
 		//! Default virtual destructor.
