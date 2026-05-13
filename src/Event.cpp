@@ -28,6 +28,10 @@ namespace KMC_Lattice {
 		execution_time = sim_ptr->getTime() - (log(sim_ptr->rand01()) / rate);
 	}
 
+	void Event::calculateExecutionTimeNoLn(const double time) {
+		execution_time = sim_ptr->getTime() + (time);
+	}
+
 	void Event::calculateRateConstant(const double input_rate) {
 		rate_constant = input_rate;
 	}
