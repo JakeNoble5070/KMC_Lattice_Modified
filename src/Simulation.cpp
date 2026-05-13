@@ -24,6 +24,7 @@ namespace KMC_Lattice {
 		Id = id;
 		// General Parameters
 		Enable_logging = params.Enable_logging;
+		Enable_writing = params.Enable_writing;
 		// Event recalculation method parameters
 		Enable_FRM = params.Enable_FRM;
 		Enable_selective_recalc = params.Enable_selective_recalc;
@@ -38,6 +39,7 @@ namespace KMC_Lattice {
 		generator.seed((int)time(0)*(id + 1));
 		// Output files
 		Logfile = params.Logfile;
+		Writefile = params.Writefile;
 	}
 
 
@@ -185,6 +187,10 @@ namespace KMC_Lattice {
 
 	bool Simulation::isLoggingEnabled() const {
 		return Enable_logging;
+	}
+
+	bool Simulation::isWritingEnabled() const {
+		return Enable_writing;
 	}
 
 	void Simulation::moveObject(Object* object_ptr, const Coords& coords_dest) {
