@@ -96,6 +96,12 @@ namespace KMC_Lattice {
 		//! \return false if logging is disabled.
 		bool isLoggingEnabled() const;
 
+		//! \brief Checks whether or not writing is enabled.
+		//! \details This is an aditional debuging tool for investigating internal values without distubting the logfile.
+		//! \return true if writing is enabled.
+		//! \return false if writing is disabled.
+		bool isWritingEnabled() const;
+
 		//! Generates a uniform random number from 0 to 1, not including 0.
 		double rand01();
 
@@ -103,11 +109,17 @@ namespace KMC_Lattice {
 		//! \details This is primarily used for testing with a set starting seed.
 		void setGeneratorSeed(const int seed);
 
+		//! \brief Returns the size of the event pointer.
+		//! \details Used for debuging and should equal the number of species (one event queued per object) + the number of queued generation events.
+		size_t getNumEvents() const { return event_ptrs.size(); }
+
 	protected:
 		//! Mersenne Twister random number generator
 		std::mt19937_64 generator;
 		//! Pointer to an output file stream that is used to print log messages to a logfile when logging is enabled.
 		std::ofstream* Logfile;
+		//! Pointer to an output file stream that is used to print writefile messages to a writefile when writing is enabled.
+		std::ofstream* Writefile;
 		//! The Lattice object represents a three-dimensional lattice, its boundary conditions, and its occupancy.
 		Lattice lattice;
 		//! The Error_found flag indicates whether or not there has been an error during one of the simulation operations.
@@ -185,6 +197,7 @@ namespace KMC_Lattice {
 		int Id;
 		// General Parameters
 		bool Enable_logging;
+		bool Enable_writing;
 		int temperature; // Kelvin
 		// KMC Algorithm Event Recalculation Method Parameters
 		bool Enable_FRM;
