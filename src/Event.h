@@ -44,6 +44,15 @@ namespace KMC_Lattice {
 		//! \param rate is the rate of the process represented by the event in units of 1/s.
 		void calculateExecutionTime(const double rate);
 
+		//! \brief Calculates and sets the execution time of the events without incoporating an ln distribution factor.
+		//! \details The function accesses the current simulation time from the Simulation object in order to calculate the 
+		//! execution time. When creating a new derived event class, one will often write a new calculateExecutionTimeNoLn 
+		//! function that contains additional factors needed to calculate the rate. This base class function can then be 
+		//! called within the new function to calculate the final execution time. NoLn removes the ln distribution factor
+		//! for event classes that already have a defined temporal distribution.
+		//! \param time is the execution time of the process represented by the event in units of s.
+		void calculateExecutionTimeNoLn(const double time);
+
 		//! Default virtual function that can be overloaded by derived Event classes.
 		void calculateRateConstant(const double input_rate);
 
