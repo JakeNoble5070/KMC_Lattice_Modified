@@ -55,6 +55,14 @@ namespace KMC_Lattice {
 			cout << "Error! The logfile filestream is not open or has an error." << endl;
 			return false;
 		}
+		if (Enable_writing && Writefile == nullptr) {
+			cout << "Error! The writefile filestream has not been set." << endl;
+			return false;
+		}
+		if (Enable_writing && !(Writefile->good() && Writefile->is_open() ) ){
+			cout << "Error! The writefile filestream is not open or has an error." << endl;
+			return false;
+		}
 		return true;
 	}
 
